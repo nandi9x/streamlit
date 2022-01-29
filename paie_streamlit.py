@@ -76,7 +76,7 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
                 csv_writer.writeheader()
         news = csv_writer.writerow(new)
         
-        st.download_button('Download CSV', f) 
+        st.download_button('Download CSV', f_object) 
    
     
         f_object.close()
