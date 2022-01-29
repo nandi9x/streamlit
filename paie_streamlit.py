@@ -76,6 +76,8 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
                 csv_writer.writeheader()
         news = csv_writer.writerow(new)
        
+        st.download_button("Press to Download", f_object,key='download-csv')
+
     
         f_object.close()
     
@@ -121,7 +123,6 @@ def main():
             csv_to_json()
             st.header(' création de "paie.csv" et "paie.json" ')
             df = pd.read_csv('paie.csv', encoding = 'latin-1')
-            st.download_button("Press to Download", df,key='download-csv')
             st.table(df)
             
 
