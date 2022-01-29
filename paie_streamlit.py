@@ -57,7 +57,7 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
     index_nom = mylist.index(nom) #chercher l'index du nom 
     
     adresse_index = mylist.index("RUBRIQUES ")
-    adresse = (mylist[index_nom+1:adresse_index-4]) #va donner plusieurs items d'une liste
+    adresse = (mylist[index_nom+1:adresse_index-3]) #va donner plusieurs items d'une liste
     adresse = " ".join(adresse) #pour affichage meilleur 
     
     net_index = mylist.index('NET PAYE EN EUROS ')
