@@ -107,7 +107,6 @@ def csv_to_json():
     
 def main():
 
-    os.chdir(r'C:\Users\ypyea\Documents\Nanda\EFREI\stage M1\jupyter notebook\bulletin de paie') ##naviguer dans ce répertoire 
 
     st.title ('Upload your payslip :page_facing_up:')
 
