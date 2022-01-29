@@ -41,9 +41,9 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
     mylist = [line.rstrip('\n') for line in f]
     while '' in mylist:      
         mylist.remove('')
-    st.write(mylist)
+  
 
-    
+
      
     #Extraction mots 
     date_index = mylist.index("Paye du : ")
@@ -52,11 +52,11 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
     mois=(b[3:5])
  
     i = mylist.index("FONTENAY-SOUS-BOIS ")
-    nom = (mylist[i+3])
+    nom = (mylist[i+5])
     index_nom = mylist.index(nom) #chercher l'index du nom 
     
-    adresse_index = mylist.index('Total brut   ')
-    adresse = (mylist[index_nom+1:adresse_index]) #va donner plusieurs items d'une liste
+    adresse_index = mylist.index("RUBRIQUES ")
+    adresse = (mylist[index_nom+1:adresse_index-4]) #va donner plusieurs items d'une liste
     adresse = " ".join(adresse) #pour affichage meilleur 
     
     net_index = mylist.index('NET PAYE EN EUROS ')
@@ -75,14 +75,13 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
         if f_object.tell() == 0:
                 csv_writer.writeheader()
         news = csv_writer.writerow(new)
-        
-        st.download_button('Download CSV', f_object) 
-   
+       
     
         f_object.close()
     
     f.close()
    
+ 
    
     
         
@@ -122,6 +121,8 @@ def main():
             csv_to_json()
             st.header(' création de "paie.csv" et "paie.json" ')
             df = pd.read_csv('paie.csv', encoding = 'latin-1')
+            df = df.to_csv().encode('utf-8')
+            st.download_button("Press to Download", df, "file.csv",key='download-csv')
             st.table(df)
             
 
