@@ -106,14 +106,8 @@ def csv_to_json():
     with open('paie.json', 'w', encoding='latin-1') as jsonf: 
         jsonString = json.dumps(jsonArray, indent=4)
         jsonf.write(jsonString)
-
-    
-def file_selector(folder_path='.'):
-    filenames = os.listdir(folder_path)
-    selected_filename = st.selectbox('Select a file', filenames)
-    return os.path.join(folder_path, selected_filename)
-
-    
+        
+        
 def main():
 
    # os.chdir(r'C:\Users\ypyea\Documents\Nanda\EFREI\stage M1\jupyter notebook\bulletin de paie') ##naviguer dans ce répertoire 
@@ -129,12 +123,10 @@ def main():
             st.header(' création de "paie.csv" et "paie.json" ')
             df = pd.read_csv('paie.csv', encoding = 'utf-8')
 
-            filename = file_selector()
-            st.write('You selected `%s`' % filename)
-            cwd = os.getcwd()
-            files = os.listdir(cwd)
-            st.write(files)
-            st.write(cwd)
+           
+            a = os.path.abspath("paie.csv')
+            st.write(a)                         
+                             
             st.table(df)
             
 
