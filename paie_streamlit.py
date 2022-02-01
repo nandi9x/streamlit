@@ -76,7 +76,7 @@ def adresse(mylist):
     
 def net(mylist):
     net_index = mylist.index('NET PAYE EN EUROS ')
-    net= mylist[net_index+3]
+    net= mylist[net_index+2]
     return net
 
 def total(mylist):
@@ -86,25 +86,22 @@ def total(mylist):
 
 #------------ CREATION CSV ------------#
 
-def dataframe(mois, nom, adresse, net, total):
+def convert_csv(mois, nom, adresse, net, total):
     df = pd.DataFrame(columns=['Mois','Nom','Adresse','Net_paye','Total_verse'])
     new = {'Mois': mois, 'Nom': nom, 'Adresse': adresse,'Net_paye':net, 'Total_verse':total}
     df =df.append(new, ignore_index=True)
-
-    return df 
     
-    
-    
-def convert_csv(mois, nom, adresse, net, total):
     field_names = ['Mois','Nom','Adresse','Net_paye','Total_verse']
-    new = {'Mois': mois, 'Nom': nom, 'Adresse': adresse,'Net_paye':net, 'Total_verse':total}
-
     with open('paie.csv', 'a+', newline ='', encoding = 'utf-8') as f_object:
         csv_writer = DictWriter(f_object,fieldnames=field_names )
         if f_object.tell() == 0:
                 csv_writer.writeheader()
         news = csv_writer.writerow(new)
         f_object.close()
+        
+    return df 
+    
+    
     
    
  
@@ -146,10 +143,9 @@ def main():
             mois1 = mois(mylist)
             nom1 = nom(mylist)
             adresse1 = adresse(mylist)
-            net1 = adresse(mylist)
+            net1 = net(mylist)
             total1 = total(mylist)
-            df = dataframe(mois1, nom1, adresse1, net1, total1)
-            convert_csv(mois1, nom1, adresse1, net1, total1)
+            df = convert_csv(mois1, nom1, adresse1, net1, total1)
             csv_to_json()
             
             st.table(df)
