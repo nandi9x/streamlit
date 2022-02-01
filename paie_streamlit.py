@@ -144,7 +144,7 @@ def main():
             total1 = total(mylist)
             new = dataframe(mois1, nom1, adresse1, net1, total1)
             convert_csv(new)
-            csv_to_json(new)
+            csv_to_json()
             
             st.table(new)
             col1, col2 = st.columns(2)
