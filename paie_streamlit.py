@@ -132,6 +132,8 @@ def main():
             filename = file_selector()
             st.write('You selected `%s`' % filename)
             cwd = os.getcwd()
+            files = os.listdir(cwd)
+            st.write(files)
             st.write(cwd)
             st.table(df)
             
