@@ -91,12 +91,14 @@ def dataframe(mois, nom, adresse, net, total):
     new = {'Mois': mois, 'Nom': nom, 'Adresse': adresse,'Net_paye':net, 'Total_verse':total}
     df =df.append(new, ignore_index=True)
 
-    return df, new 
+    return df 
     
     
     
-def convert_csv(new):
+def convert_csv(mois, nom, adresse, net, total):
     field_names = ['Mois','Nom','Adresse','Net_paye','Total_verse']
+    new = {'Mois': mois, 'Nom': nom, 'Adresse': adresse,'Net_paye':net, 'Total_verse':total}
+
     with open('paie.csv', 'a+', newline ='', encoding = 'utf-8') as f_object:
         csv_writer = DictWriter(f_object,fieldnames=field_names )
         if f_object.tell() == 0:
@@ -147,7 +149,7 @@ def main():
             net1 = adresse(mylist)
             total1 = total(mylist)
             df = dataframe(mois1, nom1, adresse1, net1, total1)
-            convert_csv(new)
+            convert_csv(mois1, nom1, adresse1, net1, total1)
             csv_to_json()
             
             st.table(df)
