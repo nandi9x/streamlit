@@ -113,6 +113,11 @@ def file_selector(folder_path='.'):
     selected_filename = st.selectbox('Select a file', filenames)
     return os.path.join(folder_path, selected_filename)
 
+
+def find(name, path):
+    for root, dirs, files in os.walk(path):
+        if name in files:
+            return os.path.join(root, name)
     
 def main():
 
@@ -130,6 +135,8 @@ def main():
             df = pd.read_csv('paie.csv', encoding = 'utf-8')
 
             filename = file_selector()
+            f= find('paie.csv', '.')
+            st.write(f)
             st.write('You selected `%s`' % filename)
             st.table(df)
             
