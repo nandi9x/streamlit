@@ -42,45 +42,61 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
     while '' in mylist:      
         mylist.remove('')
     #st.write(mylist)
+    f.close()
+    return mylist 
+   
+   
   
 
 
      
     #Extraction mots 
+def mois(mylist):
     date_index = mylist.index("Paye du : ")
     a= (mylist[date_index+1])
     b=  str(a).strip('[]') #list to str pour prendre substring
     mois=(b[3:5])
+    return mois
+
+def nom(mylist):
  
     i = mylist.index("FONTENAY-SOUS-BOIS ")
     nom = (mylist[i+5])
     index_nom = mylist.index(nom) #chercher l'index du nom 
+    return nom
     
+def adresse(mylist):
     adresse_index = mylist.index("RUBRIQUES ")
     adresse = (mylist[index_nom+1:adresse_index-2]) #va donner plusieurs items d'une liste
     adresse = " ".join(adresse) #pour affichage meilleur 
+    return adresse
     
+def net(mylist):
     net_index = mylist.index('NET PAYE EN EUROS ')
     net= mylist[net_index+2]
+    return net
 
+def total(mylist):
     total_index= mylist.index('CONGES ')
     total = (mylist[total_index-1])
+    return total
 
 #------------ CREATION CSV ------------#
 
+def dataframe(mois, nom, adresse, net, total):
     new = {'Mois': mois, 'Nom': nom, 'Adresse': adresse,'Net_paye':net, 'Total_verse':total}
+    return new 
+    
+    
+def csv(new):
     field_names = ['Mois','Nom','Adresse','Net_paye','Total_verse']
-
     with open('paie.csv', 'a+', newline ='', encoding = 'utf-8') as f_object:
         csv_writer = DictWriter(f_object,fieldnames=field_names )
         if f_object.tell() == 0:
                 csv_writer.writeheader()
         news = csv_writer.writerow(new)
-     
-    
         f_object.close()
     
-    f.close()
    
  
    
@@ -117,10 +133,16 @@ def main():
     uploaded_file = st.file_uploader('extract name, location, month, net, total', type=['pdf'], accept_multiple_files=False)
     if uploaded_file is not None:
             input_text = get_pdf_file_content(uploaded_file.name)
-            create_extract_file(input_text)
+            mylist = create_extract_file(input_text)
+            mois = mois(mylist)
+            nom = nom(mylist)
+            adresse = adresse(mylist)
+            net = adresse(mylist)
+            total = total(mylist)
+            df = dataframe(mois, nom, adresse, net, total)
             csv_to_json()
-            df = pd.read_csv('paie.csv', encoding = 'utf-8')
             
+            st.table(df)
             col1, col2 = st.columns(2)
 
             with col1:
@@ -131,7 +153,7 @@ def main():
                 with open("paie.json", "rb") as file:
                     st.download_button(label='download json',data = file, file_name='paie.json')
                 file.close()
-            st.table(df)
+           
             
                           
                 
