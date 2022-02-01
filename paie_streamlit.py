@@ -91,8 +91,8 @@ def dataframe(mois, nom, adresse, net, total):
     new = {'Mois': mois, 'Nom': nom, 'Adresse': adresse,'Net_paye':net, 'Total_verse':total}
     df =df.append(new, ignore_index=True)
 
-    return df 
-
+    return df, new 
+    
     
     
 def convert_csv(new):
@@ -147,7 +147,7 @@ def main():
             net1 = adresse(mylist)
             total1 = total(mylist)
             df = dataframe(mois1, nom1, adresse1, net1, total1)
-            convert_csv(df)
+            convert_csv(new)
             csv_to_json()
             
             st.table(df)
