@@ -121,7 +121,7 @@ def main():
             csv_to_json()
             df = pd.read_csv('paie.csv', encoding = 'utf-8')
             
-            col1, col2, col3 = st.columns(2)
+            col1, col2 = st.columns(2)
 
             with col1:
                 with open("paie.csv", "rb") as file:
