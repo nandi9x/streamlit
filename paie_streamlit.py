@@ -124,7 +124,7 @@ def main():
             df = pd.read_csv('paie.csv', encoding = 'utf-8')
 
            
-            a = os.path.abspath("paie.csv')
+            a = os.path.abspath("paie.csv")
             st.write(a)                         
                              
             st.table(df)
