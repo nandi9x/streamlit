@@ -135,6 +135,9 @@ def main():
    
 
     st.title ('Upload your payslip :page_facing_up:')
+    
+    st.text_input(label='met le path', path)
+    os.chdir(path)
 
     uploaded_file = st.file_uploader('extract name, location, month, net, total', type=['pdf'], accept_multiple_files=False)
     if uploaded_file is not None:
