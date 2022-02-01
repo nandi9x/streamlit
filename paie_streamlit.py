@@ -108,6 +108,11 @@ def csv_to_json():
         jsonf.write(jsonString)
 
     
+def file_selector(folder_path='.'):
+    filenames = os.listdir(folder_path)
+    selected_filename = st.selectbox('Select a file', filenames)
+    return os.path.join(folder_path, selected_filename)
+
     
 def main():
 
@@ -123,10 +128,9 @@ def main():
             csv_to_json()
             st.header(' création de "paie.csv" et "paie.json" ')
             df = pd.read_csv('paie.csv', encoding = 'utf-8')
-            import pathlib
-            a = sorted(pathlib.Path('.').glob('**/paie.csv'))
-            st.write(a)
-            
+
+            filename = file_selector()
+            st.write('You selected `%s`' % filename)
             st.table(df)
             
 
