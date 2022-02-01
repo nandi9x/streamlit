@@ -122,7 +122,11 @@ def main():
             create_extract_file(input_text)
             csv_to_json()
             st.header(' création de "paie.csv" et "paie.json" ')
-            df = pd.read_csv('paie.csv', encoding = 'latin-1')
+            df = pd.read_csv('paie.csv', encoding = 'utf-8')
+            import pathlib
+            a = sorted(pathlib.Path('.').glob('paie.csv'))
+            st.write(a)
+            
             st.table(df)
             
 
