@@ -62,10 +62,13 @@ def nom(mylist):
  
     i = mylist.index("FONTENAY-SOUS-BOIS ")
     nom = (mylist[i+5])
-    index_nom = mylist.index(nom) #chercher l'index du nom 
+    #index_nom = mylist.index(nom) #chercher l'index du nom 
     return nom
     
 def adresse(mylist):
+    i = mylist.index("FONTENAY-SOUS-BOIS ")
+    nom = (mylist[i+5])
+    index_nom = mylist.index(nom)
     adresse_index = mylist.index("RUBRIQUES ")
     adresse = (mylist[index_nom+1:adresse_index-2]) #va donner plusieurs items d'une liste
     adresse = " ".join(adresse) #pour affichage meilleur 
