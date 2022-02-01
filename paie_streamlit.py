@@ -130,8 +130,9 @@ def main():
             df = pd.read_csv('paie.csv', encoding = 'utf-8')
 
             filename = file_selector()
- 
             st.write('You selected `%s`' % filename)
+            cwd = os.getcwd()
+            st.write(cwd)
             st.table(df)
             
 
