@@ -76,6 +76,9 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
         if f_object.tell() == 0:
                 csv_writer.writeheader()
         news = csv_writer.writerow(new)
+        
+        st.download_button(data=f_object,file_name='paie.csv')
+                             
        
     
     
@@ -125,8 +128,8 @@ def main():
 
            
             a = os.path.abspath("paie.csv")
-            st.write(a)                         
-                             
+            st.write(a)  
+
             st.table(df)
             
 
