@@ -122,7 +122,7 @@ def main():
             st.header(' création de "paie.csv" et "paie.json" ')
             df = pd.read_csv('paie.csv', encoding = 'utf-8')
             
-            st.download_button(label='download',file_name='paie.csv')
+            st.download_button(label='download',data = csv, file_name='paie.csv')
                              
 
            
