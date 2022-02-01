@@ -121,8 +121,10 @@ def main():
             csv_to_json()
             st.header(' création de "paie.csv" et "paie.json" ')
             df = pd.read_csv('paie.csv', encoding = 'utf-8')
+            with open("paie.csv", "rb") as file:
             
-            st.download_button(label='download',data = csv, file_name='paie.csv')
+            st.download_button(label='download',data = file, file_name='paie.csv')
+            file.close()
                              
 
            
