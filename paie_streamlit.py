@@ -123,7 +123,7 @@ def main():
             df = pd.read_csv('paie.csv', encoding = 'utf-8')
             with open("paie.csv", "rb") as file:
             
-            st.download_button(label='download',data = file, file_name='paie.csv')
+                st.download_button(label='download',data = file, file_name='paie.csv')
             file.close()
                              
 
