@@ -41,7 +41,7 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
     mylist = [line.rstrip('\n') for line in f]
     while '' in mylist:      
         mylist.remove('')
-    st.write(mylist)
+    #st.write(mylist)
   
 
 
@@ -121,18 +121,20 @@ def main():
             csv_to_json()
             st.header(' création de "paie.csv" et "paie.json" ')
             df = pd.read_csv('paie.csv', encoding = 'utf-8')
-            with open("paie.csv", "rb") as file:
+            with open("paie.csv", "rb", encoding='utf-8') as file:
             
-                st.download_button(label='download',data = file, file_name='paie.csv')
+                st.download_button(label='download csv',data = file, file_name='paie.csv')
             file.close()
-                             
-
-           
-            a = os.path.abspath("paie.csv")
-            st.write(a)  
-
             st.table(df)
             
+                          
+                
+
+           
+            #a = os.path.abspath("paie.csv")
+           
+
+       
 
     
 if __name__ == "__main__":
