@@ -99,7 +99,7 @@ def convert_csv(mois, nom, adresse, net, total):
         news = csv_writer.writerow(new)
         f_object.close()
         
-    return df 
+   
     
     
     
@@ -145,7 +145,8 @@ def main():
             adresse1 = adresse(mylist)
             net1 = net(mylist)
             total1 = total(mylist)
-            df = convert_csv(mois1, nom1, adresse1, net1, total1)
+            convert_csv(mois1, nom1, adresse1, net1, total1)
+            df = pd.read_csv('paie.csv')
             csv_to_json()
             
             st.table(df)
