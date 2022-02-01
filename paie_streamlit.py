@@ -76,7 +76,7 @@ def adresse(mylist):
     
 def net(mylist):
     net_index = mylist.index('NET PAYE EN EUROS ')
-    net= mylist[net_index+2]
+    net= mylist[net_index+3]
     return net
 
 def total(mylist):
