@@ -119,14 +119,18 @@ def main():
             input_text = get_pdf_file_content(uploaded_file.name)
             create_extract_file(input_text)
             csv_to_json()
-            st.header(' création de "paie.csv" et "paie.json" ')
             df = pd.read_csv('paie.csv', encoding = 'utf-8')
-            with open("paie.csv", "rb") as file:
-                st.download_button(label='download csv',data = file, file_name='paie.csv')
-            file.close()
-            with open("paie.json", "rb") as file:
-                st.download_button(label='download json',data = file, file_name='paie.json')
-            file.close()
+            
+            col1, col2, col3 = st.columns(2)
+
+            with col1:
+                with open("paie.csv", "rb") as file:
+                    st.download_button(label='download csv',data = file, file_name='paie.csv')
+                file.close()
+            with col2:
+                with open("paie.json", "rb") as file:
+                    st.download_button(label='download json',data = file, file_name='paie.json')
+                file.close()
             st.table(df)
             
                           
