@@ -134,12 +134,12 @@ def main():
     if uploaded_file is not None:
             input_text = get_pdf_file_content(uploaded_file.name)
             mylist = create_extract_file(input_text)
-            mois = mois(mylist)
-            nom = nom(mylist)
-            adresse = adresse(mylist)
-            net = adresse(mylist)
-            total = total(mylist)
-            df = dataframe(mois, nom, adresse, net, total)
+            mois1 = mois(mylist)
+            nom1 = nom(mylist)
+            adresse1 = adresse(mylist)
+            net1 = adresse(mylist)
+            total1 = total(mylist)
+            df = dataframe(mois1, nom1, adresse1, net1, total1)
             csv_to_json()
             
             st.table(df)
