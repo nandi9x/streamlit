@@ -41,7 +41,7 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
     mylist = [line.rstrip('\n') for line in f]
     while '' in mylist:      
         mylist.remove('')
-    #st.write(mylist)
+    st.write(mylist)
     f.close()
     return mylist 
    
