@@ -71,14 +71,13 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
     new = {'Mois': mois, 'Nom': nom, 'Adresse': adresse,'Net_paye':net, 'Total_verse':total}
     field_names = ['Mois','Nom','Adresse','Net_paye','Total_verse']
 
-    with open('paie.csv', 'a+', newline ='') as f_object:
+    with open('paie.csv', 'a+', newline ='', encoding = 'utf-8') as f_object:
         csv_writer = DictWriter(f_object,fieldnames=field_names )
         if f_object.tell() == 0:
                 csv_writer.writeheader()
         news = csv_writer.writerow(new)
        
-        st.download_button("Press to Download", f_object,key='download-csv')
-
+    
     
         f_object.close()
     
