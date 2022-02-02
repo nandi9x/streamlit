@@ -139,9 +139,8 @@ def main():
    
     file = st.text_input('absolute path of your file')
     path = os.path.abspath(file)
-    if path:
-        st.write(path)
-        os.chdir(path)
+    st.write(path)
+      
     
   
     uploaded_file = st.file_uploader('extract name, location, month, net, total', type=['pdf'], accept_multiple_files=False)
