@@ -134,7 +134,7 @@ def main():
    os.chdir(r'C:\Users\ypyea\Documents\Nanda\EFREI\stage M1\jupyter notebook\bulletin de paie') ##naviguer dans ce répertoire 
    
 
-    st.title ('Upload your payslip :page_facing_up:')
+   st.title ('Upload your payslip :page_facing_up:')
         
   
     uploaded_file = st.file_uploader('extract name, location, month, net, total', type=['pdf'], accept_multiple_files=False)
