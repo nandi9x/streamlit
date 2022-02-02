@@ -131,23 +131,11 @@ def csv_to_json():
         
 def main():
 
-   # os.chdir(r'C:\Users\ypyea\Documents\Nanda\EFREI\stage M1\jupyter notebook\bulletin de paie') ##naviguer dans ce répertoire 
+   os.chdir(r'C:\Users\ypyea\Documents\Nanda\EFREI\stage M1\jupyter notebook\bulletin de paie') ##naviguer dans ce répertoire 
    
 
     st.title ('Upload your payslip :page_facing_up:')
-    
-   
-    file = st.text_input('file')
-    path = os.path.abspath(file)
-    if path:
-        st.write(path)
-    
-    file = st.text_input('absolute path of your file')
-
         
-    
-      
-    
   
     uploaded_file = st.file_uploader('extract name, location, month, net, total', type=['pdf'], accept_multiple_files=False)
     if uploaded_file is not None:
