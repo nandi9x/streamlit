@@ -137,9 +137,15 @@ def main():
     st.title ('Upload your payslip :page_facing_up:')
     
    
-    file = st.text_input('absolute path of your file')
+    file = st.text_input('file')
     path = os.path.abspath(file)
-    st.write(path)
+    if path:
+        st.write(path)
+    
+    file = st.text_input('absolute path of your file')
+
+        
+    
       
     
   
