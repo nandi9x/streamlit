@@ -12,6 +12,7 @@ exemple : streamlit run C:\Users\ypyea\Documents\Nanda\EFREI\stage M1\Github\str
 Un lien local s'affichera, ouvrez-le sur un navigateur web 
 
 Concernant l'interface web :
+- Pour bulletin de paie format 1 et 2, l'extraction ne marchera que si et seulement si les bulletins de paie sont sous même format (même rubrique, même ligne, même emplacement. Seul les informations à extraires varient)
 - Le nom du csv ou json sera toujours paie.csv/json. Si vous voulez le renommer, il faut aller directement dans le code source.
 - pour l'option ajout de multiples files, ne faire cette étape quand un seul coup. Si vous voulez ajouter d'autres documents, aller dans single files. Vous pouvez par la suite retournez dans multiples files
 - Très important de rentrer le path des fichiers à extraire (aller sur lien de l'étape 5 si vous ne savez pas où le trouver). Si les fichiers à extraire sont dans le même dossier que le fichier python, pas besoin de path
