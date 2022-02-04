@@ -379,13 +379,9 @@ def convert_to_csv(new_skills, new_langues, r):
 #-----------------------------------MAIN--------------------------------#
     
 def main():
-    choix = st.sidebar.selectbox('Choisis le format',['','fiche de paie 1-RH','fiche de paie 2-Noreddine', 'CV'])
+    choix = st.sidebar.selectbox('Choisis le format',['fiche de paie 1-RH','fiche de paie 2-Noreddine', 'CV'])
    
-    if choix == '':
-        st.title('Extraction des données ETIXWAY')
-        st.subheader('1 - Choisis quel fichier extraire: bulletin de paie ou CV? ')
-        st.subheader('2 - Entre le directory du dossier où sont stockés tes fichiers à extraire très important')
-        st.subheader('3 - Upload ton fichier, le csv final sera enregistré dans le directory entré ')
+    
 
     if choix =='fiche de paie 1-RH':
         st.title ('Telecharge fiche de paie format 1 :page_facing_up:')
