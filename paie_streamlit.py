@@ -1,5 +1,5 @@
 import os
-from pdfminer.high_level import extract_text
+#from pdfminer.high_level import extract_text
 import streamlit as st 
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
@@ -131,8 +131,8 @@ def csv_to_json():
 ###########----FORMAT 2 NOREDDINE---############
 
 #-----------LOAD-----------#
-def load(path):
-    input_text= extract_text(path)
+def load(input_text):
+    #input_text= extract_text(path)
     f = StringIO(input_text)
     mylist = (f.getvalue())
     mylist = mylist.split("\n")
@@ -246,8 +246,8 @@ def convert_csv(URSSAF,retraite_complémentaire,mutuelle_prévoyance,taxe_app_et
 
 #------------ CREATION FILE TXT ET CHARGEMENT ------------#
 
-def extract_content(pdf_path):
-    input_text=  extract_text(pdf_path)
+def extract_content(input_text):
+    #input_text=  extract_text(pdf_path)
     input_text = input_text.lower()
     f = StringIO(input_text)
     file_content = (f.getvalue())
@@ -459,7 +459,8 @@ def main():
         uploaded_file = st.file_uploader('extraction de URSSAF, retraite complémentaire, mutuelle & prévoyance,taxe & formation pro', type=['pdf'], accept_multiple_files=False)
         if uploaded_file is not None:
                 path = os.path.abspath(uploaded_file.name)
-                mylist = load(path)
+                text =  get_pdf_file_content(path)
+                mylist = load(text)
                 ursaf01_1 = ursaff1(mylist)
                 ursaf01_2= ursaff2(mylist)
                 ursaf01_3= ursaff3(mylist)
@@ -512,7 +513,8 @@ def main():
         uploaded_file = st.file_uploader('extraction des compétences, langues, email', type=['pdf'], accept_multiple_files=False)
         if uploaded_file is not None:
             path = os.path.abspath(uploaded_file.name)
-            file_content = extract_content(path)
+            text = get_pdf_file_content(path)
+            file_content = extract_content(text)
             lemmatized_word = normalisation(file_content)
             skills = extract_skills(lemmatized_word)
             langue = extract_langues(lemmatized_word)
