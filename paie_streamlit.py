@@ -77,11 +77,11 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
     mois=(b[3:5])
  
     i = mylist.index("FONTENAY-SOUS-BOIS ")
-    nom = (mylist[i+3])
+    nom = (mylist[i+5])
     index_nom = mylist.index(nom) #chercher l'index du nom 
     
-    adresse_index = mylist.index('Total brut   ')
-    adresse = (mylist[index_nom+1:adresse_index]) #va donner plusieurs items d'une liste
+    adresse_index = mylist.index('RUBRIQUES ')
+    adresse = (mylist[index_nom+1:adresse_index-3]) #va donner plusieurs items d'une liste
     adresse = " ".join(adresse) #pour affichage meilleur 
     
     net_index = mylist.index('NET PAYE EN EUROS ')
