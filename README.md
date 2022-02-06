@@ -1,15 +1,15 @@
 Comment installer le programme sur votre ordinateur?
 
-1 - Aller dans le repository du projet original https://github.com/nandi9x/streamlit 
-2 - Cliquer sur l'icône "code" en vert 
-3 - Il faut cloner le repository sur votre ordinateur, soit en téléchargant le dossier ZIP, soit en utilisant la commande git clone 'link'
-4 - Une fois installé dans l'ordinateur, le mieux est de mettre les fichiers à extraire dans le même dossier mais facultatif
-5 - Installer tous les frameworks en tapant la commande pip install -r /path/to/requirements.txt (mettre votre propre path, pour le trouver sous windows : https://fr.wikihow.com/trouver-le-chemin-pour-un-fichier-sous-Windows)
+- Aller dans le repository du projet original https://github.com/nandi9x/streamlit 
+- Cliquer sur l'icône "code" en vert 
+- Il faut cloner le repository sur votre ordinateur, soit en téléchargant le dossier ZIP, soit en utilisant la commande git clone 'link'
+- Une fois installé dans l'ordinateur, le mieux est de mettre les fichiers à extraire dans le même dossier mais facultatif
+- Installer tous les frameworks en tapant la commande pip install -r /path/to/requirements.txt (mettre votre propre path, pour le trouver sous windows : https://fr.wikihow.com/trouver-le-chemin-pour-un-fichier-sous-Windows)
 
 Vous pouvez maintenant lancer le programme en allant sur le terminal et en tapant:
-streamlit run path/paie_streamlit.py (clique droit sur paie_streamlit > propriétés > copier collier l'emplacement OU alors glisser le fichier directement sur le terminal)
-exemple : streamlit run C:\Users\ypyea\Documents\Nanda\EFREI\stage M1\Github\streamlit\paie_streamlit.py 
-Un lien local s'affichera, ouvrez-le sur un navigateur web 
+- streamlit run path/paie_streamlit.py (clique droit sur paie_streamlit > propriétés > copier collier l'emplacement OU alors glisser le fichier directement sur le terminal)
+- exemple : streamlit run C:\Users\ypyea\Documents\Nanda\EFREI\stage M1\Github\streamlit\paie_streamlit.py 
+- Un lien local s'affichera, ouvrez-le sur un navigateur web 
 
 Concernant l'interface web :
 - Pour bulletin de paie format 1 et 2, l'extraction ne marchera que si et seulement si les bulletins de paie sont sous même format (même rubrique, même ligne, même emplacement. Seul les informations à extraires varient)
