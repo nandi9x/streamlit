@@ -411,7 +411,7 @@ def main():
                     
                     df = pd.read_csv('paie.csv', encoding = 'latin-1')
                     a= count(df)
-                    st.write(a, 'nombres de fichiers extraits')
+                    st.write(a, 'fichiers extraits')
                     st.table(df)
                     csv =os.path.abspath('paie.csv')
                     st.write('les fichiers csv et json ont été sauvegardé dans:')
@@ -438,6 +438,8 @@ def main():
                             st.error ("le json n'a pas été crée")
                 
                         df = pd.read_csv('paie.csv', encoding = 'latin-1')
+                        a= count(df)
+                        st.write(a, 'fichiers extraits')
                         st.table(df)
                         csv =os.path.abspath('paie.csv')
                         st.write('les fichiers csv et json ont été sauvegardé dans:')
