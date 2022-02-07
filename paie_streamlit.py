@@ -496,6 +496,9 @@ def main():
                     st.error ("le csv n'a pas été crée")
     
                 csv =os.path.abspath('paieF2.csv')
+                df = pd.read_csv('paieF2.csv')
+                a= count(df)
+                st.write(a, 'fichiers extraits')
                 st.table(df)
                 st.write('le fichier csv a été sauvegardé dans:' )
                 st.text(csv)
@@ -525,6 +528,9 @@ def main():
                 st.error ("le csv n'a pas été crée")
 
             csv =os.path.abspath('cv.csv')
+            df1 = pd.read_csv('cv.csv', encoding='latin-1')
+            a= count(df1)
+            st.write(a, 'fichiers extraits')
             st.table(df)
             st.write('le fichier csv a été sauvegardé dans:' )
             st.text(csv)
