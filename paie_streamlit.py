@@ -65,7 +65,6 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
     mylist = [line.rstrip('\n') for line in f]
     while '' in mylist:      
         mylist.remove('')
-    st.write(mylist)
     
 
     
@@ -77,11 +76,11 @@ def create_extract_file(input_text): #créer un fichier file et extrait les donn
     mois=(b[3:5])
  
     i = mylist.index("FONTENAY-SOUS-BOIS ")
-    nom = (mylist[i+5])
+    nom = (mylist[i+3])
     index_nom = mylist.index(nom) #chercher l'index du nom 
     
-    adresse_index = mylist.index('RUBRIQUES ')
-    adresse = (mylist[index_nom+1:adresse_index-3]) #va donner plusieurs items d'une liste
+    adresse_index = mylist.index('Total brut   ')
+    adresse = (mylist[index_nom+1:adresse_index]) #va donner plusieurs items d'une liste
     adresse = " ".join(adresse) #pour affichage meilleur 
     
     net_index = mylist.index('NET PAYE EN EUROS ')
@@ -132,8 +131,8 @@ def csv_to_json():
 ###########----FORMAT 2 NOREDDINE---############
 
 #-----------LOAD-----------#
-def load(input_text):
-    #input_text= extract_text(path)
+def load(path):
+    input_text= extract_text(path)
     f = StringIO(input_text)
     mylist = (f.getvalue())
     mylist = mylist.split("\n")
@@ -247,8 +246,8 @@ def convert_csv(URSSAF,retraite_complémentaire,mutuelle_prévoyance,taxe_app_et
 
 #------------ CREATION FILE TXT ET CHARGEMENT ------------#
 
-def extract_content(input_text):
-    #input_text=  extract_text(pdf_path)
+def extract_content(pdf_path):
+    input_text=  extract_text(pdf_path)
     input_text = input_text.lower()
     f = StringIO(input_text)
     file_content = (f.getvalue())
@@ -382,8 +381,6 @@ def convert_to_csv(new_skills, new_langues, r):
 def main():
     choix = st.sidebar.selectbox('Choisis le format',['fiche de paie 1-RH','fiche de paie 2-Noreddine', 'CV'])
    
-    
-
     if choix =='fiche de paie 1-RH':
         st.title ('Telecharge fiche de paie format 1 :page_facing_up:')
 
@@ -458,8 +455,7 @@ def main():
         uploaded_file = st.file_uploader('extraction de URSSAF, retraite complémentaire, mutuelle & prévoyance,taxe & formation pro', type=['pdf'], accept_multiple_files=False)
         if uploaded_file is not None:
                 path = os.path.abspath(uploaded_file.name)
-                text =  get_pdf_file_content(path)
-                mylist = load(text)
+                mylist = load(path)
                 ursaf01_1 = ursaff1(mylist)
                 ursaf01_2= ursaff2(mylist)
                 ursaf01_3= ursaff3(mylist)
@@ -515,8 +511,7 @@ def main():
         uploaded_file = st.file_uploader('extraction des compétences, langues, email', type=['pdf'], accept_multiple_files=False)
         if uploaded_file is not None:
             path = os.path.abspath(uploaded_file.name)
-            text = get_pdf_file_content(path)
-            file_content = extract_content(text)
+            file_content = extract_content(path)
             lemmatized_word = normalisation(file_content)
             skills = extract_skills(lemmatized_word)
             langue = extract_langues(lemmatized_word)
@@ -528,8 +523,7 @@ def main():
                 st.error ("le csv n'a pas été crée")
 
             csv =os.path.abspath('cv.csv')
-            df1 = pd.read_csv('cv.csv', encoding='latin-1')
-            a= count(df1)
+            a= count(df)
             st.write(a, 'fichiers extraits')
             st.table(df)
             st.write('le fichier csv a été sauvegardé dans:' )
@@ -543,6 +537,3 @@ if __name__ == "__main__":
     main()
 
 
-#pas d'ajout de multiples files 
-#pas de choix de nom du csv ni du json 
-#peut rajouter le même fichier 
