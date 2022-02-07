@@ -1,5 +1,5 @@
 import os
-#from pdfminer.high_level import extract_text
+from pdfminer.high_level import extract_text
 import streamlit as st 
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.converter import TextConverter
