@@ -13,6 +13,7 @@ Vous pouvez maintenant lancer le programme en allant sur le terminal et en tapan
 
 Concernant l'interface web :
 - Pour bulletin de paie format 1 et 2, l'extraction ne marchera que si et seulement si les bulletins de paie sont sous même format (même rubrique, même ligne, même emplacement. Seul les informations à extraires varient)
+- Format 1 est le bulletin de paie simple sur une page, format 2 est les fiches indivuelles détaillés de chaque mois avec urssaf, mutuelle etc 
 - Le nom du csv ou json sera toujours paie.csv pour format 1, paieF2.csv pour format 2. Si vous voulez les renommer, il faut aller directement dans le code source.
 - pour l'option ajout de multiples files, ne faire cette étape quand un seul coup (Sélectionner tous les fichiers à extraire 1 seule fois) Si vous voulez ajouter d'autres documents après avoir sélectionner multiples files, aller dans single files. Vous pouvez par la suite retournez dans multiples files
 - Très important de rentrer le path des fichiers à extraire (aller sur lien de l'étape 5 si vous ne savez pas où le trouver). Si les fichiers à extraire sont dans le même dossier que le fichier python, pas besoin de path
